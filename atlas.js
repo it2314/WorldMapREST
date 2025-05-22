@@ -1,6 +1,7 @@
 const continent = document.getElementById('continent');
 const modal = new bootstrap.Modal(document.getElementById('windowCountry'));
 const modalBody = document.getElementById('modal-body-content');
+const modalInfo = document.getElementById('modal-body-info');
 
 async function getData(region) {
     const url = `https://restcountries.com/v3.1/region/${region}`;
@@ -20,8 +21,8 @@ async function getData(region) {
                     <img class="card-img-top" src="${country.flags.png}"  alt="Vlajka">
                     <div class="card-body">
                       <h4 class="card-title">${country.name.common}</h4>
-                      <p class="card-text">Počet obyvatel: ${country.population}</p>
-                      <a href="#" class="btn btn-info card-link" data-name="${country.name.common}">Informace</a>
+                      <p class="card-text">Population: ${country.population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}</p>
+                      <a href="#" class="btn btn-info card-link btn-grow" data-name="${country.name.common}">More Information ></a>
                     </div>
                 </div>
             </div>            
@@ -36,8 +37,14 @@ async function getData(region) {
           .then(res => res.json())
           .then(data => {
             const country = data[0];
-            modalBody.innerHTML = `
-            <h4>${country.name.common}</h4>`
+            modalBody.innerHTML = `<h1 class="fw-bold text-center">${country.name.common}</h1>`
+            modalInfo.innerHTML = ` 
+            <p><b>Continent:</b> ${country.continents ?? "Not specified"}</p> 
+            <p><b>Languages:</b> ${Object.values(country.languages) ?? "Not specified"}</p>
+            <p><b>Area:</b> ${country.area ?? "Not specified"} km<sup>2</sup></p>
+            <p><b>Timezones:</b> ${country.timezones ?? "Not specified"}</p>
+            <p><b>Capital:</b> ${country.capital ?? "Not specified"}</p> 
+            <p><b>Alternative Spellings:</b> ${country.altSpellings ?? "Not specified"}</p>`
           })
           .catch(error => {
             console.error(error)

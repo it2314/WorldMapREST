@@ -20,15 +20,15 @@
 
     <body>
         <header class="bg-info p-3">
-            <h1 class="display-3 text-white text-center">Atlas zemí</h1>
+            <h1 class="display-3 text-white text-center p-3" style="letter-spacing: 0.6em;">World Atlas</h1>
             <div>
                 <select class="form-select " aria-label="Default select example" id="continent">
-                    <option value="europe">Evropa</option>
+                    <option value="europe">Europe</option>
                     <option value="asia">Asie</option>
                     <option value="africa">Afrika</option>
-                    <option value="americas">Amerika</option>
-                    <option value="oceania">Oceánie</option>
-                    <option value="antarctic">Antarktida</option>
+                    <option value="americas">America</option>
+                    <option value="oceania">Oceania</option>
+                    <option value="antarctic">Antarctica</option>
                 </select>
             </div>
         </header>
@@ -38,9 +38,8 @@
                 <div class="card">
                     <img class="card-img-top" src="https://flagcdn.com/w320/bw.png" alt="Vlajka">
                     <div class="card-body">
-                      <h4 class="card-title">Název státu</h4>
-                      <p class="card-text">Hlavní město</p>
-                      <a href="#" class="btn btn-info card-link">Informace</a>
+
+                      <a href="#" class="btn btn-info card-link ">Information</a>
                     </div>
                 </div>
             </div>
@@ -56,19 +55,19 @@
             <div class="modal-content">
 
             <!-- Modal Header -->
-            <div class="modal-header" id="modal-body-content">
-                <h4 class="modal-title">COUNTRY NAME</h4>
+            <div class="modal-header justify-content-center" id="modal-body-content">
+                <h4 class="modal-title text-center">Country Name</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
             <!-- Modal body -->
-            <div class="modal-body" >
-                COUNTRY INFORMATION
+            <div class="modal-body" id="modal-body-info">
+                Country Information
             </div>
 
             <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-danger btn-grow w-50" data-bs-dismiss="modal">Close</button>
             </div>
 
             </div>
@@ -90,3 +89,13 @@
         <script src="atlas.js"></script>
     </body>
 </html>
+
+<style>
+  .btn-grow {
+    transition: transform 0.1s ease-in-out;
+  }
+
+  .btn-grow:hover {
+    transform: scale(1.05);
+  }
+</style>
